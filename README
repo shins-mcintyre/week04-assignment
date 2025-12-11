@@ -1,0 +1,31 @@
+Put reflections here
+
+Reflection
+Please also provide an assignment reflection in your project README.md file.
+
+This was my process:
+
+1. Followed set-up steps to set up client/server folders as we have done before. checked that the root routes were working on localhost
+2. Created an empty database table in Supabase with the columns I needed
+3. Set up the connection between the database and the server through .env and dbConnection.js
+<!-- - what I don;t know here is how do you check this connected ok? -->
+4. Added HTML to create a very basic form to start with + submit button - opened this on localhost and it comes up, but I had an error in the Console: client/app.js:1 Failed to load resource: the server responded with a status of 404 (Not Found) - I assume this is because there is nothing in my app.js in my client (which is linked in the script of the html)?
+5. Therefore, next step is to set up the app.js with event listener etc.
+
+Required
+🎯 What requirements did you achieve?
+🎯 Were there any requirements or goals that you were unable to achieve?
+🎯 If so, what was it that you found difficult about these tasks?
+Optional
+🏹 Feel free to add any other reflections you would like to share about your submission, for example:
+
+Requesting feedback about a specific part of your submission.
+What useful external sources helped you complete the assignment (e.g Youtube tutorials)?
+What errors or bugs did you encounter while completing your assignment? How did you solve them?
+What went really well and what could have gone better?
+
+Tips:
+
+- The bigger picture is scary and overhwelming - divide your project into small manageable steps - use user stories to help
+- Deploy as soon as possible
+- Plan Plan PLAN! - keeps you focused

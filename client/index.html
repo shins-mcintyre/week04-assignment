@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/style.css" />
+    <script src="./src/app.js" defer type="module"></script>
+    <title>Vite App</title>
+  </head>
+  <body>
+    <h1>Sligo Visitor Book</h1>
+    <!-- TODO: element to allow users to input data -->
+    <form id="guestbook">
+      <label for="name">Name: </label>
+      <input type="text" name="name" required />
+      <label for="location">Visiting from: </label>
+      <input type="text" name="location" required />
+      <label for="date">Date: </label>
+      <input type="date" name="date" />
+      <label for="comment">Comments: </label>
+      <input type="text" name="comment" />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
