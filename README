@@ -13,8 +13,46 @@ This was my process:
 <!-- Now I have a basic form, a server, and an empty database table, and the srever and database are linked -->
 5. Now everything seems like it is set up, I will deploy with render - followed all steps but got an error in the server deployment... (==> Exited with status 1)
 6. Next I am adding logic to app.js in client to collect data inputted into forms. I was getting cors error so tried adding cors to app.js but that also caused errors - found out you are not supposed to use that on client side/frontend. Realised it migt have been I didn;t have app.use(cors()) - that worked and now the event handler works!
+   <!-- Now the deployment in render is working, no errors woo (idk why) -->
+   <!--! THIS IS WHAT I NEED TO FIGURE OUT - TRY $1 $2 thing?? -->
 7. Next steps in app.js - render the user data on the interface
+<!--! FIGURE OUT HOW TO GET THE DATA INTO THE TABLE via the form? --> -->
 8. I need to somehow make it so the data that is submitted on the form is going into the database
+
+Requirements
+🎯 Ensure your HTML form is working and submitting data into the database as expected.
+
+<!-- I need to workout why the data is not going into my data base -->
+
+🎯 Confirm that your project is functional on multiple screen sizes using either Responsive Design or media queries.
+
+<!-- Do CSS and make it responsive -->
+
+🎯 Create a working GET API route in your server.
+
+<!-- I believe this is all good because the message of my GET route appears when I open the page - however maybe I need to change what the route actually does rather than just send a message? It should be the one that is used to render the data on the interface... but I think I only add that logic when I fetch it in app.js so perhaps it's ok as is -->
+
+🎯 Create a working POST API route in your client.
+
+<!-- I have also done this - the message of the route appears in my server terminal when I click submit on the form. Do I need to add the action within here to put the data that is submitted into the database? -->
+
+🎯 Seed your database with realistic-looking ‘dummy’ data through the Supabase query editor or a seed file in your server. Ensure that this is saved and submitted (in a screenshot or seed file form) so it can be marked and tested efficiently.
+
+<!-- follow steps from demo/workshop to do this like with the messages table -->
+
+Stretch goals
+🏹 Provide additional functionality on the form, for example, by adding form validation or other options.
+
+<!-- add form validations - not too hard -->
+
+🏹 Style the page excellently, for example, by adding extra UX considerations or animations.
+
+<!-- refresh on ux recommendations for forms -->
+
+🏹 Add a delete button to each message and a DELETE route in the server.
+🏹 Create an option for users to like others’ posts.
+
+<!-- design the page so each time a form is submitted, a card appears on the page with the information they submitted -->
 
 Required
 🎯 What requirements did you achieve?

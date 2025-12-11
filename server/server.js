@@ -42,11 +42,28 @@ app.get("/guestbook", (req, res) => {
 });
 // this message is showing ok in localhost:8080/guest-book
 
-// TODO: a route to POST data from database
-// this route will allow data submitted in the form to go into the data base
+// this worked but it doesn't actually link to database - copied below one instead from demo...
+// // TODO: a route to POST data from database
+// // this route will allow data submitted in the form to go into the data base
+// app.post("/guestbook", (req, res) => {
+//   console.log({
+//     status:
+//       "Guest book entry submitted successfully - change this action later",
+//   });
+// });
+
+//TODO: CREATE data using the form values from the client to send it to the database
 app.post("/guestbook", (req, res) => {
-  console.log({
-    status:
-      "Guest book entry submitted successfully - change this action later",
-  });
+  //receive the data from the client
+  const newEntry = req.body.formValues;
+  console.log(newEntry);
+  //query the database to insert the data into the staff table
+  //we use parameters in SQL to protect the data and to reuse the query
+  const query = db.query(
+    `INSERT INTO guestbook (name, location, date, comment) VALUES ($1, $2, $3, $4)`,
+    [newEntry.name, newEntry.location, newEntry.date, newEntry.comment]
+  );
+  res.json({ status: "success", values: newEntry });
 });
+
+// YES the form entries are appearing in terminal and in the database!!!

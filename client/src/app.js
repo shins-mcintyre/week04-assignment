@@ -12,7 +12,7 @@ function handleGuestSubmit(event) {
   const formValues = Object.fromEntries(formDataTemplate);
   console.log(formValues);
 
-  // fetch the POST server route
+  // fetch the POST server route - this connects client to server
   fetch("http://localhost:8080/guestbook", {
     method: "POST",
     headers: {
@@ -30,6 +30,17 @@ guestForm.addEventListener("submit", handleGuestSubmit);
 
 // TODO: render user's data on the interface
 
-// fetch the GET route from the server
+function renderData(event) {
+  // fetch the GET route from the server
+  fetch("http://localhost:8080/guestbook", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ formValues }),
+  });
 
-// render the data using DOM elements (one piece per data)
+  // render the data using DOM elements (one piece per data) - what does one piece per data mean - use $1, $2 thing maybe?
+  const dataOutput = document.getElementById("data-output");
+  dataOutput.appendChild(formValues);
+}
