@@ -9,8 +9,12 @@ This was my process:
 2. Created an empty database table in Supabase with the columns I needed
 3. Set up the connection between the database and the server through .env and dbConnection.js
 <!-- - what I don;t know here is how do you check this connected ok? -->
-4. Added HTML to create a very basic form to start with + submit button - opened this on localhost and it comes up, but I had an error in the Console: client/app.js:1 Failed to load resource: the server responded with a status of 404 (Not Found) - I assume this is because there is nothing in my app.js in my client (which is linked in the script of the html)?
-5. Therefore, next step is to set up the app.js with event listener etc.
+4. Added HTML to create a very basic form to start with + submit button - opened this on localhost and it comes up, but I had an error in the Console: client/app.js:1 Failed to load resource: the server responded with a status of 404 (Not Found) - my app.js left out the ./src - fixed
+<!-- Now I have a basic form, a server, and an empty database table, and the srever and database are linked -->
+5. Now everything seems like it is set up, I will deploy with render - followed all steps but got an error in the server deployment... (==> Exited with status 1)
+6. Next I am adding logic to app.js in client to collect data inputted into forms. I was getting cors error so tried adding cors to app.js but that also caused errors - found out you are not supposed to use that on client side/frontend. Realised it migt have been I didn;t have app.use(cors()) - that worked and now the event handler works!
+7. Next steps in app.js - render the user data on the interface
+8. I need to somehow make it so the data that is submitted on the form is going into the database
 
 Required
 🎯 What requirements did you achieve?

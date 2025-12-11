@@ -2,17 +2,17 @@
 // installed express, pg and dotenv and cors in server
 // imports
 import express from "express";
-
-// unsure if we need pg and dotenv here, or just in db connection?
-// import pg from "pg";
-// import dotenv from "dotenv";
+import pg from "pg";
+import dotenv from "dotenv";
 import cors from "cors";
+import { db } from "./dbConnection.js";
 
 // configs
 dotenv.config();
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 // port
 const PORT = 8080;
