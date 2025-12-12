@@ -16,8 +16,7 @@ This was my process:
    <!-- Now the deployment in render is working, no errors woo (idk why) -->
    <!--! THIS IS WHAT I NEED TO FIGURE OUT - TRY $1 $2 thing?? -->
 7. Next steps in app.js - render the user data on the interface
-<!--! FIGURE OUT HOW TO GET THE DATA INTO THE TABLE via the form? --> -->
-8. I need to somehow make it so the data that is submitted on the form is going into the database
+8. I need to somehow make it so the data that is submitted on the form is going into the database - done!!
 
 Requirements
 🎯 Ensure your HTML form is working and submitting data into the database as expected.

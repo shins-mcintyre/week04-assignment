@@ -1,5 +1,9 @@
 console.log("hello world");
 
+// import dotenv from "dotenv";
+import dotenv from "../node_modules/dotenv";
+dotenv.config();
+
 // TODO: collect users data and send to the server
 
 const guestForm = document.getElementById("guestbook");
@@ -13,7 +17,7 @@ function handleGuestSubmit(event) {
   console.log(formValues);
 
   // fetch the POST server route - this connects client to server
-  fetch("http://localhost:8080/guestbook", {
+  fetch("https://week04-assignment-server-1jmp.onrender.com", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -30,17 +34,38 @@ guestForm.addEventListener("submit", handleGuestSubmit);
 
 // TODO: render user's data on the interface
 
-function renderData(event) {
-  // fetch the GET route from the server
-  fetch("http://localhost:8080/guestbook", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ formValues }),
-  });
-
-  // render the data using DOM elements (one piece per data) - what does one piece per data mean - use $1, $2 thing maybe?
-  const dataOutput = document.getElementById("data-output");
-  dataOutput.appendChild(formValues);
+async function loadGuestbook() {
+  // fetch the GET route from the server (apparently cannot include body in GET response?)
+  const response = await fetch(
+    "https://week04-assignment-server-1jmp.onrender.com"
+  );
+  // data is the json version of what is fetched (the response)
+  const data = await response.json();
+  console.log(data);
+  renderData(data);
 }
+
+// // render the data using DOM elements (one piece per data)
+// function renderData(rows) {
+//   // select the element where the data will go
+//   const dataOutput = document.getElementById("data-output");
+//   // add blank text to the element
+//   dataOutput.innerHTML = "";
+
+//   // create a loop so each value in the table is added to the page
+//   rows.forEach((entry) => {
+//     // for each submission or row, create a div, give it a class name, add text to it and append it
+//     const item = document.createElement("div");
+//     item.classList.add("guest-entry");
+//     item.innerHTML = `
+//     <p><strong>${entry.name}</strong> from ${entry.location}</p>
+//     <p>${entry.comment}</p>
+//     <p><i>${entry.date}</i></p>
+// `;
+
+//     dataOutput.appendChild(item);
+//   });
+// }
+
+// // load up entries when window is opened:
+// window.addEventListener("DOMContentLoaded", loadGuestbook);
