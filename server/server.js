@@ -34,12 +34,12 @@ app.get("/", (req, res) => {
 // TODO: a route to READ data from database
 
 // this route will read data from the guestbook to feedback to the client - will this be needed to show the results on the page after submission?
-app.get("/guestbook", (req, res) => {
-  res.json({
-    message:
-      "This is the READ / GET root route - replace the action here later",
-  });
-});
+// app.get("/guestbook", (req, res) => {
+//   res.json({
+//     message:
+//       "This is the READ / GET root route - replace the action here later",
+//   });
+// });
 // this message is showing ok in localhost:8080/guest-book
 
 // change GET route to get an array from the guestbook rather than a message - taken fro chat GPT to resolve one of my errors, since the for Each function was not working as I didn't have an array
