@@ -1,5 +1,45 @@
 /* reset */
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  color: white;
+}
+
+header {
+  background-color: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+#guestbook {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+button {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  max-width: 100px;
+  max-height: 50px;
+  padding: 1rem;
+}
+
+#data-output {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
 /* Responsive design --> media queries */
 
 /* accessibility - colour, layout */

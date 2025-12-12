@@ -31,10 +31,11 @@ async function handleGuestSubmit(event) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(formValues),
+    body: JSON.stringify({ formValues }),
   });
-  // Advice from chat gpt: Refresh the displayed list after submitting
-  await getGuestbookData();
+
+  // refresh interface immediately without needing to reload the page
+  await getAllEntries();
 }
 
 // when the form is submitted, the function above triggers and data is put into the database and the guestbook is loaded within that function
@@ -56,10 +57,9 @@ async function getAllEntries() {
     entryDiv.classList.add("form-entry");
 
     entryDiv.innerHTML = `
-      <h2>${rows.name}</h2>
-      <p><strong>Description:</strong> ${rows.location || "No description"}</p>
-      <p><strong>Visibility:</strong> ${rows.date}</p>
-      <p><strong>Stars:</strong> ${rows.comment}</p>
+      <p><strong>${rows.name}</strong> visiting from ${rows.location}</p>
+      <p><i>Date:</i> ${rows.date}</p>
+      <p>Comments: ${rows.comment}</p>
       <hr>
     `;
 

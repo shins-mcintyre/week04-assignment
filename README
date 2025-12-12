@@ -14,8 +14,8 @@ This was my process:
 5. Now everything seems like it is set up, I will deploy with render - followed all steps but got an error in the server deployment... (==> Exited with status 1)
 6. Next I am adding logic to app.js in client to collect data inputted into forms. I was getting cors error so tried adding cors to app.js but that also caused errors - found out you are not supposed to use that on client side/frontend. Realised it migt have been I didn;t have app.use(cors()) - that worked and now the event handler works!
    <!-- Now the deployment in render is working, no errors woo (idk why) -->
-   <!--! THIS IS WHAT I NEED TO FIGURE OUT - TRY code from fox site? -->
-7. Next steps in app.js - render the user data on the interface
+
+7. Next steps in app.js - render the user data on the interface - I found this part extremely hard :( I got the data from the tabe to appear on the page, but it needs to be reloaded to see the new coments - I cant figure out how to get the brand new submission to show up immediately
 8. I need to somehow make it so the data that is submitted on the form is going into the database - done!! And after a long time of fixing error after error I also managed to get this working with the render link and not just local host - this was super hard
 
 Requirements
@@ -56,6 +56,10 @@ Stretch goals
 Required
 🎯 What requirements did you achieve?
 🎯 Were there any requirements or goals that you were unable to achieve?
+
+<!-- I could not get the enries to appear on the page as soon as they are submitted - instead they only appear when page is reloaded -->
+<!-- The dates are appearing in a weird format - I could not figure a way that fixed it without messing up the whole code -->
+
 🎯 If so, what was it that you found difficult about these tasks?
 Optional
 🏹 Feel free to add any other reflections you would like to share about your submission, for example:
