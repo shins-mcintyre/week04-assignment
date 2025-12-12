@@ -1,9 +1,5 @@
 console.log("hello world");
 
-// import dotenv from "dotenv";
-import dotenv from "../node_modules/dotenv";
-dotenv.config();
-
 // TODO: collect users data and send to the server
 
 const guestForm = document.getElementById("guestbook");
