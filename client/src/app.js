@@ -1,5 +1,12 @@
 console.log("hello world");
 
+// set up
+import express from "express";
+import cors from "cors";
+const app = express();
+app.use(cors());
+app.use(express.json());
+
 // TODO: collect users data and send to the server
 
 const guestForm = document.getElementById("guestbook");
@@ -13,7 +20,7 @@ function handleGuestSubmit(event) {
   console.log(formValues);
 
   // fetch the POST server route - this connects client to server
-  fetch("https://week04-assignment-server-1jmp.onrender.com", {
+  fetch("https://week04-assignment-server-1jmp.onrender.com/guestbook", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -33,7 +40,7 @@ guestForm.addEventListener("submit", handleGuestSubmit);
 async function loadGuestbook() {
   // fetch the GET route from the server (apparently cannot include body in GET response?)
   const response = await fetch(
-    "https://week04-assignment-server-1jmp.onrender.com"
+    "https://week04-assignment-server-1jmp.onrender.com/guestbook"
   );
   // data is the json version of what is fetched (the response)
   const data = await response.json();
