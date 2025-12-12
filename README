@@ -22,7 +22,7 @@ This was my process:
 Requirements
 🎯 Ensure your HTML form is working and submitting data into the database as expected.
 
-<!-- I need to workout why the data is not going into my data base -->
+<!-- I need to workout why the data is not going into my data base - I figured it out!! Using code from demo yesterday woo-->
 
 🎯 Confirm that your project is functional on multiple screen sizes using either Responsive Design or media queries.
 
@@ -38,7 +38,7 @@ Requirements
 
 🎯 Seed your database with realistic-looking ‘dummy’ data through the Supabase query editor or a seed file in your server. Ensure that this is saved and submitted (in a screenshot or seed file form) so it can be marked and tested efficiently.
 
-<!-- follow steps from demo/workshop to do this like with the messages table -->
+<!--I managed to do this following demo steps. However I was getting the same issue with the workshop where multiple of the same rows of data were showing (even though I ran 'node seed.js' in the terminal, and not --watch. I searched how to control that and added a suggestion from chatGPT to only allow unique entries. I also then wanted to add data from SQL but was having issue with the date format, which is different in SQL than VScode - I searched how to control the date format so they are the same. The solution was more complicated than expected so I just changed the way I typed the dates to match SQL YYYY/MM/DD -->
 
 Stretch goals
 🏹 Provide additional functionality on the form, for example, by adding form validation or other options.
