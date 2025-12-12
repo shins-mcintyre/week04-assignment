@@ -8,14 +8,15 @@ console.log("hello world");
 // app.use(express.json());
 
 // update links to render
-// const clientUrl = "https://week04-assignment-server-1jmp.onrender.com";
+// const clientUrl = "https://week04-assignment-8por.onrender.com/";
 const serverUrl = "https://week04-assignment-server-1jmp.onrender.com";
+const localHost = "http://localhost:8080";
 
 // TODO: collect users data and send to the server
 
 const guestForm = document.getElementById("guestbook");
 // console.log(guestForm);
-const dataOutput = document.getElementById("data-output");
+// const dataOutput = document.getElementById("data-output");
 
 // submit event to collect users data
 async function handleGuestSubmit(event) {
@@ -25,7 +26,7 @@ async function handleGuestSubmit(event) {
   console.log("Submitting:", formValues);
 
   // fetch the POST server route - this connects client to server
-  await fetch(`${serverUrl}/guestbook`, {
+  await fetch(`${localHost}/guestbook`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -33,7 +34,7 @@ async function handleGuestSubmit(event) {
     body: JSON.stringify(formValues),
   });
   // Advice from chat gpt: Refresh the displayed list after submitting
-  await loadGuestbook();
+  await getGuestbookData();
 }
 
 // when the form is submitted, the function above triggers and data is put into the database and the guestbook is loaded within that function
@@ -43,30 +44,68 @@ guestForm.addEventListener("submit", handleGuestSubmit);
 
 // TODO: render user's data on the interface
 
-async function loadGuestbook() {
-  // fetch the GET route from the server (apparently cannot include body in GET response?)
-  const response = await fetch(`${serverUrl}/guestbook`);
-  // data is the json version of what is fetched (the response)
-  const rows = await response.json();
-  console.log("Fetched entries:", rows);
-  renderData(rows);
-  // return data;
+async function getAllEntries() {
+  const response = await fetch(`${localHost}/guestbook`);
+  const entries = await response.json();
+
+  const container = document.getElementById("data-output");
+  container.innerHTML = ""; // clear first
+
+  entries.forEach((rows) => {
+    const entryDiv = document.createElement("div");
+    entryDiv.classList.add("form-entry");
+
+    entryDiv.innerHTML = `
+      <h2>${rows.name}</h2>
+      <p><strong>Description:</strong> ${rows.location || "No description"}</p>
+      <p><strong>Visibility:</strong> ${rows.date}</p>
+      <p><strong>Stars:</strong> ${rows.comment}</p>
+      <hr>
+    `;
+
+    container.appendChild(entryDiv);
+  });
 }
 
-// render the data using DOM elements (one piece per data)
-function createData(rows) {
-  // select the element where the data will go
-  // add blank text to the element
-  dataOutput.innerHTML = `${entry.name}`;
-  guestForm.appendChild(dataOutput);
-}
+getAllEntries();
 
-async function renderData() {
-  const entryData = await loadGuestbook();
-  createData(entryData);
-}
+// async function getGuestbookData() {
+//   // fetch the GET route from the server (apparently cannot include body in GET response?)
+//   const response = await fetch(`${localHost}/guestbook`);
+//   // data is the json version of what is fetched (the response)
+//   const rowsData = await response.json();
+//   console.log("Fetched entries:", rows);
+//   const name = rowsData.name;
+//   const location = rowsData.location;
+//   const date = rowsData.date;
+//   const comment = rowsData.comment;
+//   const outputText = `Name: ${name}
+//     Location: ${location}
+//     Date: ${date}
+//     Comment: ${comment}`;
 
-renderData();
+//   document.getElementById("data-output").textContent = outputText;
+
+// renderData(rows);
+// return data;
+// }
+
+// getGuestbookData();
+
+// // render the data using DOM elements (one piece per data)
+// function createData(rows) {
+//   // select the element where the data will go
+//   // add blank text to the element
+//   dataOutput.innerHTML = `${entry.name}`;
+//   guestForm.appendChild(dataOutput);
+// }
+
+// async function renderData() {
+//   const entryData = await getGuestbookData();
+//   createData(entryData);
+// }
+
+// renderData();
 
 // clear old content - not sure I want to do this?
 // dataOutput.innerHTML = "";

@@ -34,24 +34,26 @@ app.get("/", (req, res) => {
 // TODO: a route to READ data from database
 
 // this route will read data from the guestbook to feedback to the client - will this be needed to show the results on the page after submission?
-app.get("/guestbook", (req, res) => {
-  res.json({
-    message:
-      "This is the READ / GET root route - replace the action here later",
-  });
-});
+// app.get("/guestbook", (req, res) => {
+//   res.json({
+//     message:
+//       "This is the READ / GET root route - replace the action here later",
+//   });
+// });
 // this message is showing ok in localhost:8080/guest-book
 
-// change GET route to get an array from the guestbook rather than a message - taken fro chat GPT to resolve one of my errors, since the for Each function was not working as I didn't have an array
-// app.get("/guestbook", async (req, res) => {
-//   try {
-//     const result = await db.query("SELECT * FROM guestbook ORDER BY date DESC");
-//     res.json(result.rows); // send the array directly
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json({ error: "Database error" });
-//   }
-// });
+//TODO: I want to READ the data in the guestbook table
+// route --> "/guestbook"
+// HTTP method --> get
+app.get("/guestbook", async function (request, response) {
+  //query the database
+  const query = await db.query(
+    `SELECT name, location, date, comment FROM guestbook;`
+  );
+  console.log(query);
+  //parse the response into JSON and wrangle it to show just the rows property
+  response.json(query.rows);
+});
 
 // this worked but it doesn't actually link to database - copied below one instead from demo...
 // // TODO: a route to POST data from database
