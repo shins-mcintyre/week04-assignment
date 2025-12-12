@@ -14,9 +14,9 @@ This was my process:
 5. Now everything seems like it is set up, I will deploy with render - followed all steps but got an error in the server deployment... (==> Exited with status 1)
 6. Next I am adding logic to app.js in client to collect data inputted into forms. I was getting cors error so tried adding cors to app.js but that also caused errors - found out you are not supposed to use that on client side/frontend. Realised it migt have been I didn;t have app.use(cors()) - that worked and now the event handler works!
    <!-- Now the deployment in render is working, no errors woo (idk why) -->
-   <!--! THIS IS WHAT I NEED TO FIGURE OUT - TRY $1 $2 thing?? -->
+   <!--! THIS IS WHAT I NEED TO FIGURE OUT - TRY code from fox site? -->
 7. Next steps in app.js - render the user data on the interface
-8. I need to somehow make it so the data that is submitted on the form is going into the database - done!!
+8. I need to somehow make it so the data that is submitted on the form is going into the database - done!! And after a long time of fixing error after error I also managed to get this working with the render link and not just local host - this was super hard
 
 Requirements
 🎯 Ensure your HTML form is working and submitting data into the database as expected.

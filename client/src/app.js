@@ -15,13 +15,14 @@ const serverUrl = "https://week04-assignment-server-1jmp.onrender.com";
 
 const guestForm = document.getElementById("guestbook");
 // console.log(guestForm);
+const dataOutput = document.getElementById("data-output");
 
 // submit event to collect users data
 async function handleGuestSubmit(event) {
   event.preventDefault();
   const formDataTemplate = new FormData(guestForm);
   const formValues = Object.fromEntries(formDataTemplate);
-  console.log(formValues);
+  console.log("Submitting:", formValues);
 
   // fetch the POST server route - this connects client to server
   await fetch(`${serverUrl}/guestbook`, {
@@ -29,21 +30,14 @@ async function handleGuestSubmit(event) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ formValues }),
+    body: JSON.stringify(formValues),
   });
+  // Advice from chat gpt: Refresh the displayed list after submitting
+  await loadGuestbook();
 }
 
-// fetch("https://week04-assignment-server-1jmp.onrender.com/guestbook", {
-//   method: "POST",
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-//   body: JSON.stringify({ formValues }),
-// });
-
+// when the form is submitted, the function above triggers and data is put into the database and the guestbook is loaded within that function
 guestForm.addEventListener("submit", handleGuestSubmit);
-
-// !Once you are finished your projct, replace your localhost url with the deployed server url from Render
 
 // ======================================
 
@@ -53,32 +47,55 @@ async function loadGuestbook() {
   // fetch the GET route from the server (apparently cannot include body in GET response?)
   const response = await fetch(`${serverUrl}/guestbook`);
   // data is the json version of what is fetched (the response)
-  const data = await response.json();
-  console.log(data);
-  renderData(data);
+  const rows = await response.json();
+  console.log("Fetched entries:", rows);
+  renderData(rows);
+  // return data;
 }
 
-// // render the data using DOM elements (one piece per data)
-// function renderData(rows) {
+function renderData(rows) {
+  // clear old content - not sure I want to do this?
+  dataOutput.innerHTML = "";
+
+  // make a loop to render each data point
+  rows.forEach((entry) => {
+    const item = document.createElement("div");
+    item.classList.add("guest-entry");
+    item.innerHTML = `
+      <p><strong>${entry.name}</strong> from ${entry.location}</p>
+      <p>${entry.comment}</p>
+      <p><i>${entry.date}</i></p>
+  `;
+
+    dataOutput.appendChild(item);
+  });
+}
+
+window.addEventListener("DOMContentLoaded", loadGuestbook);
+
+// use that data to render the submissions on the site (into guestForm)
+
+// render the data using DOM elements (one piece per data)
+// function createData(rows) {
 //   // select the element where the data will go
-//   const dataOutput = document.getElementById("data-output");
 //   // add blank text to the element
-//   dataOutput.innerHTML = "";
+//   dataOutput.innerHTML = `${entry.name}`;
+//   guestForm.appendChild(dataOutput);
 
-//   // create a loop so each value in the table is added to the page
-//   rows.forEach((entry) => {
-//     // for each submission or row, create a div, give it a class name, add text to it and append it
-//     const item = document.createElement("div");
-//     item.classList.add("guest-entry");
-//     item.innerHTML = `
-//     <p><strong>${entry.name}</strong> from ${entry.location}</p>
-//     <p>${entry.comment}</p>
-//     <p><i>${entry.date}</i></p>
-// `;
+//   // control function to run the functions in order
+//   async function renderData() {
+//     const entryData = await loadGuestbook();
+//     createData(entryData);
+//   }
 
-//     dataOutput.appendChild(item);
-//   });
+//   renderData();
+
+//   //   // create a loop so each value in the table is added to the page
+//   //   rows.forEach((entry) => {
+//   //     // for each submission or row, create a div, give it a class name, add text to it and append it
+
+//   //   });
 // }
 
 // // load up entries when window is opened:
-// window.addEventListener("DOMContentLoaded", loadGuestbook);
+// // window.addEventListener("DOMContentLoaded", loadGuestbook);
