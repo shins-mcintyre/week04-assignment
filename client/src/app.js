@@ -53,25 +53,39 @@ async function loadGuestbook() {
   // return data;
 }
 
-function renderData(rows) {
-  // clear old content - not sure I want to do this?
-  dataOutput.innerHTML = "";
-
-  // make a loop to render each data point
-  rows.forEach((entry) => {
-    const item = document.createElement("div");
-    item.classList.add("guest-entry");
-    item.innerHTML = `
-      <p><strong>${entry.name}</strong> from ${entry.location}</p>
-      <p>${entry.comment}</p>
-      <p><i>${entry.date}</i></p>
-  `;
-
-    dataOutput.appendChild(item);
-  });
+// render the data using DOM elements (one piece per data)
+function createData(rows) {
+  // select the element where the data will go
+  // add blank text to the element
+  dataOutput.innerHTML = `${entry.name}`;
+  guestForm.appendChild(dataOutput);
 }
 
-window.addEventListener("DOMContentLoaded", loadGuestbook);
+async function renderData() {
+  const entryData = await loadGuestbook();
+  createData(entryData);
+}
+
+renderData();
+
+// clear old content - not sure I want to do this?
+// dataOutput.innerHTML = "";
+
+//   // make a loop to render each data point
+//   rows.forEach((entry) => {
+//     const item = document.createElement("div");
+//     item.classList.add("guest-entry");
+//     item.innerHTML = `
+//       <p><strong>${entry.name}</strong> from ${entry.location}</p>
+//       <p>${entry.comment}</p>
+//       <p><i>${entry.date}</i></p>
+//   `;
+
+//     dataOutput.appendChild(item);
+//   });
+// }
+
+// window.addEventListener("DOMContentLoaded", loadGuestbook);
 
 // use that data to render the submissions on the site (into guestForm)
 
