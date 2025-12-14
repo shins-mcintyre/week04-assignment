@@ -42,7 +42,7 @@ Requirements
 Stretch goals
 🏹 Provide additional functionality on the form, for example, by adding form validation or other options.
 
-<!-- add form validations - not too hard -->
+<!-- added required and maxlength  form validations  -->
 
 🏹 Style the page excellently, for example, by adding extra UX considerations or animations.
 

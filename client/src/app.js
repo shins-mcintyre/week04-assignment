@@ -26,7 +26,7 @@ async function handleGuestSubmit(event) {
   console.log("Submitting:", formValues);
 
   // fetch the POST server route - this connects client to server
-  await fetch(`${localHost}/guestbook`, {
+  await fetch(`${serverUrl}/guestbook`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -46,7 +46,7 @@ guestForm.addEventListener("submit", handleGuestSubmit);
 // TODO: render user's data on the interface
 
 async function getAllEntries() {
-  const response = await fetch(`${localHost}/guestbook`);
+  const response = await fetch(`${serverUrl}/guestbook`);
   const entries = await response.json();
 
   const container = document.getElementById("data-output");
